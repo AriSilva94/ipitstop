@@ -13,7 +13,7 @@ export default async function EditClientPage({ params }: Props) {
   if (!client) notFound()
 
   return (
-    <div className="p-8 max-w-lg">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-lg w-full">
       <h1 className="text-2xl font-bold text-white mb-1">Editar Cliente</h1>
       <p className="text-slate-500 text-sm mb-6">Atualize os dados do cliente.</p>
       <EditClientForm shopSlug={shopSlug} client={client} />

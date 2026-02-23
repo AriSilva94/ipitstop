@@ -18,11 +18,11 @@ export default async function AppLayout({ children, params }: Props) {
   const session = await getSession()
 
   return (
-    <div className="app-shell h-screen flex overflow-hidden bg-slate-900">
+    <div className="app-shell min-h-dvh lg:h-screen flex flex-col lg:flex-row overflow-hidden bg-slate-900">
       {/* Sidebar */}
-      <aside className="app-sidebar h-full w-60 bg-slate-950 border-r border-border/70 dark:border-border/40 flex flex-col flex-shrink-0">
+      <aside className="app-sidebar w-full lg:w-60 bg-slate-950 border-b lg:border-b-0 lg:border-r border-border/70 dark:border-border/40 flex flex-col lg:h-full">
         {/* Logo */}
-        <div className="px-5 py-5 border-b border-border/70 dark:border-border/40">
+        <div className="px-4 sm:px-5 py-4 sm:py-5 border-b border-border/70 dark:border-border/40">
           <div className="flex items-center gap-2.5 mb-3">
             <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center flex-shrink-0">
               <svg className="w-4.5 h-4.5 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
@@ -46,23 +46,26 @@ export default async function AppLayout({ children, params }: Props) {
         <AppSidebarNav shopSlug={shopSlug} />
 
         {/* Footer */}
-        <div className="px-4 py-4 border-t border-border/70 dark:border-border/40">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center">
-              <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
+        <div className="px-4 py-3 sm:py-4 border-t border-border/70 dark:border-border/40 lg:mt-auto">
+          <div className="flex items-center justify-between gap-3 lg:block">
+            <div className="flex items-center gap-2 lg:mb-3">
+              <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center">
+                <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </div>
+              <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">{session?.role ?? ''}</span>
             </div>
-            <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">{session?.role ?? ''}</span>
-          </div>
-          <div className="mb-3">
-            <ThemeToggle />
+            <div>
+              <ThemeToggle />
+            </div>
           </div>
           <form
             action={async () => {
               'use server'
               await logoutAction(shopSlug)
             }}
+            className="mt-2 lg:mt-0"
           >
             <button
               type="submit"
@@ -79,7 +82,7 @@ export default async function AppLayout({ children, params }: Props) {
       </aside>
 
       {/* Main content */}
-      <main className="app-content flex-1 overflow-auto bg-slate-900">
+      <main className="app-content min-w-0 flex-1 overflow-auto bg-slate-900">
         {children}
       </main>
     </div>

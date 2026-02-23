@@ -14,15 +14,15 @@ export default async function DashboardPage({ params }: Props) {
   ])
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Page header */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <h1 className="text-2xl font-bold text-white">Dashboard</h1>
         <p className="text-slate-500 text-sm mt-1">Visão geral da sua oficina</p>
       </div>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mb-8 sm:mb-10">
         <div className="bg-slate-800 border border-slate-700 rounded-2xl p-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-20 h-20 bg-amber-500/5 rounded-full blur-xl" />
           <div className="w-10 h-10 bg-amber-500/15 border border-amber-500/20 rounded-xl flex items-center justify-center mb-4">
@@ -51,10 +51,10 @@ export default async function DashboardPage({ params }: Props) {
       {/* Quick access */}
       <div>
         <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Acesso Rápido</h2>
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href={`/${shopSlug}/app/clients`}
-            className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
+            className="flex items-center justify-center sm:justify-start gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
           >
             <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -63,7 +63,7 @@ export default async function DashboardPage({ params }: Props) {
           </Link>
           <Link
             href={`/${shopSlug}/app/clients/new`}
-            className="flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 px-4 py-2.5 rounded-xl text-sm font-bold transition-colors"
+            className="flex items-center justify-center sm:justify-start gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 px-4 py-2.5 rounded-xl text-sm font-bold transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5v15m7.5-7.5h-15" />

@@ -55,25 +55,27 @@ export default function AppSidebarNav({ shopSlug }: Props) {
   ]
 
   return (
-    <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
-      {navLinks.map((link) => {
-        const isActive = isActivePath(pathname, link.href)
-        return (
-          <Link
-            key={link.href}
-            href={link.href}
-            aria-current={isActive ? 'page' : undefined}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
-              isActive
-                ? 'bg-foreground text-background font-semibold'
-                : 'text-slate-400 hover:bg-slate-800 hover:text-amber-400'
-            }`}
-          >
-            <span className={isActive ? 'text-background' : 'text-current'}>{link.icon}</span>
-            {link.label}
-          </Link>
-        )
-      })}
+    <nav className="px-3 py-3 lg:py-4 border-b border-border/70 dark:border-border/40 lg:border-b-0 lg:flex-1 lg:overflow-y-auto">
+      <div className="flex gap-1.5 overflow-x-auto lg:flex-col lg:space-y-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {navLinks.map((link) => {
+          const isActive = isActivePath(pathname, link.href)
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={isActive ? 'page' : undefined}
+              className={`shrink-0 whitespace-nowrap lg:w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                isActive
+                  ? 'bg-foreground text-background font-semibold'
+                  : 'text-slate-400 hover:bg-slate-800 hover:text-amber-400'
+              }`}
+            >
+              <span className={isActive ? 'text-background' : 'text-current'}>{link.icon}</span>
+              {link.label}
+            </Link>
+          )
+        })}
+      </div>
     </nav>
   )
 }

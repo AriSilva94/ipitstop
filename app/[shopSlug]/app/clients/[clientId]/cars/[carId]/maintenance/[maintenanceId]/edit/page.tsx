@@ -15,7 +15,7 @@ export default async function EditMaintenancePage({ params }: Props) {
   if (!maintenance) notFound()
 
   return (
-    <div className="p-8 max-w-lg">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-lg w-full">
       <h1 className="text-2xl font-bold text-white mb-1">Editar OS</h1>
       <p className="text-slate-500 text-sm mb-6">Atualize os dados da ordem de serviço.</p>
       <EditMaintenanceForm

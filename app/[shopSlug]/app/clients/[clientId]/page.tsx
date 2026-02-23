@@ -22,9 +22,9 @@ export default async function ClientDetailPage({ params }: Props) {
   if (!client) notFound()
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-1.5 text-sm text-slate-500 mb-5">
+      <div className="flex items-center gap-1.5 text-sm text-slate-500 mb-5 flex-wrap">
         <Link href={`/${shopSlug}/app/clients`} className="hover:text-slate-300 transition-colors">Clientes</Link>
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -33,7 +33,7 @@ export default async function ClientDetailPage({ params }: Props) {
       </div>
 
       {/* Header */}
-      <div className="flex items-start justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
         <div>
           <h1 className="text-2xl font-bold text-white">{client.name}</h1>
           {client.phone && (
@@ -48,10 +48,10 @@ export default async function ClientDetailPage({ params }: Props) {
             <p className="text-slate-500 text-sm mt-1.5 italic">{client.notes}</p>
           )}
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <Link
             href={`/${shopSlug}/app/clients/${client.id}/edit`}
-            className="flex items-center gap-1.5 border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white px-4 py-2 rounded-xl text-sm transition-colors"
+            className="w-full sm:w-auto flex items-center justify-center gap-1.5 border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white px-4 py-2 rounded-xl text-sm transition-colors"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
@@ -63,7 +63,7 @@ export default async function ClientDetailPage({ params }: Props) {
       </div>
 
       {/* Cars Section */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
         <h2 className="text-base font-semibold text-white flex items-center gap-2">
           <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
@@ -72,7 +72,7 @@ export default async function ClientDetailPage({ params }: Props) {
         </h2>
         <Link
           href={`/${shopSlug}/app/clients/${client.id}/cars/new`}
-          className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-900 px-3 py-2 rounded-xl text-sm font-bold transition-colors"
+          className="w-full sm:w-auto flex items-center justify-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-slate-900 px-3 py-2 rounded-xl text-sm font-bold transition-colors"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.5v15m7.5-7.5h-15" />

@@ -49,13 +49,13 @@ export default function EditClientForm({ shopSlug, client }: { shopSlug: string;
         </div>
       )}
 
-      <div className="flex gap-3 pt-1">
+      <div className="flex flex-col sm:flex-row gap-3 pt-1">
         <button type="submit" disabled={loading}
-          className="bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 px-6 py-2.5 rounded-xl text-sm font-bold transition-colors">
+          className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 px-6 py-2.5 rounded-xl text-sm font-bold transition-colors">
           {loading ? 'Salvando...' : 'Salvar'}
         </button>
         <a href={`/${shopSlug}/app/clients/${client.id}`}
-          className="px-5 py-2.5 rounded-xl text-sm text-slate-400 hover:text-slate-200 hover:bg-slate-700 transition-colors">
+          className="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl text-sm text-slate-400 hover:text-slate-200 hover:bg-slate-700 transition-colors">
           Cancelar
         </a>
       </div>

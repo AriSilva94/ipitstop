@@ -202,12 +202,12 @@ export default function DateFilter() {
   // ─── Render ─────────────────────────────────────────────────────────────
 
   return (
-    <div ref={ref} className="relative shrink-0">
+    <div ref={ref} className="relative w-full sm:w-auto sm:shrink-0">
 
       {/* ── Trigger button ── */}
       <button
         onClick={toggleOpen}
-        className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium border transition-all ${
+        className={`w-full sm:w-auto flex items-center justify-between sm:justify-start gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium border transition-all ${
           hasFilter
             ? 'bg-amber-500/10 border-amber-500/30 text-amber-400 hover:bg-amber-500/15'
             : 'bg-slate-800 border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-600'
@@ -217,7 +217,7 @@ export default function DateFilter() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
             d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
         </svg>
-        <span className="max-w-37.5 truncate">{buttonLabel}</span>
+        <span className="max-w-[12rem] truncate">{buttonLabel}</span>
         <svg className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -226,7 +226,7 @@ export default function DateFilter() {
 
       {/* ── Dropdown panel ── */}
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-72 bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl shadow-black/60 z-50 overflow-hidden">
+        <div className="absolute right-0 top-full mt-2 w-full sm:w-72 bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl shadow-black/60 z-50 overflow-hidden">
 
           {/* Preset list */}
           <div className="p-1.5">

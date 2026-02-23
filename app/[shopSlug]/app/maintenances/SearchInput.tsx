@@ -22,7 +22,7 @@ export default function SearchInput({ defaultValue }: { defaultValue: string }) 
   }
 
   return (
-    <div className="relative flex-1 max-w-sm">
+    <div className="relative w-full sm:flex-1 sm:max-w-sm">
       <svg
         className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors ${isPending ? 'text-amber-400' : 'text-slate-500'}`}
         fill="none" stroke="currentColor" viewBox="0 0 24 24"

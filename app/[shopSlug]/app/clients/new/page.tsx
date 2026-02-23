@@ -25,7 +25,7 @@ export default function NewClientPage() {
   }
 
   return (
-    <div className="p-8 max-w-lg">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-lg w-full">
       <h1 className="text-2xl font-bold text-white mb-1">Novo Cliente</h1>
       <p className="text-slate-500 text-sm mb-6">Preencha os dados do cliente.</p>
 
@@ -57,13 +57,13 @@ export default function NewClientPage() {
           </div>
         )}
 
-        <div className="flex gap-3 pt-1">
+        <div className="flex flex-col sm:flex-row gap-3 pt-1">
           <button type="submit" disabled={loading}
-            className="bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 px-6 py-2.5 rounded-xl text-sm font-bold transition-colors">
+            className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 px-6 py-2.5 rounded-xl text-sm font-bold transition-colors">
             {loading ? 'Salvando...' : 'Salvar'}
           </button>
           <a href={`/${shopSlug}/app/clients`}
-            className="px-5 py-2.5 rounded-xl text-sm text-slate-400 hover:text-slate-200 hover:bg-slate-700 transition-colors">
+            className="w-full sm:w-auto text-center px-5 py-2.5 rounded-xl text-sm text-slate-400 hover:text-slate-200 hover:bg-slate-700 transition-colors">
             Cancelar
           </a>
         </div>

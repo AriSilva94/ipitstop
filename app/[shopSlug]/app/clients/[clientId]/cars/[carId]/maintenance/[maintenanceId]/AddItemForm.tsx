@@ -29,30 +29,30 @@ export default function AddItemForm({ shopSlug, maintenanceId }: { shopSlug: str
   const labelClass = "block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5"
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="grid grid-cols-12 gap-3 items-end">
-      <div className="col-span-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
+      <div className="sm:col-span-5">
         <label className={labelClass}>Descrição *</label>
         <input name="description" required type="text" placeholder="Óleo 5W30, Troca de filtro..."
           className={inputClass} />
       </div>
-      <div className="col-span-2">
+      <div className="sm:col-span-2">
         <label className={labelClass}>Qtd. *</label>
         <input name="quantity" required type="number" step="0.01" min="0.01" placeholder="1"
           className={inputClass} />
       </div>
-      <div className="col-span-3">
+      <div className="sm:col-span-3">
         <label className={labelClass}>Vlr. Unit. (R$) *</label>
         <input name="unitPrice" required type="number" step="0.01" min="0" placeholder="0,00"
           className={inputClass} />
       </div>
-      <div className="col-span-2">
+      <div className="sm:col-span-2">
         <button type="submit" disabled={loading}
           className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-slate-900 py-2.5 rounded-xl text-sm font-bold transition-colors">
           {loading ? '...' : 'Adicionar'}
         </button>
       </div>
       {error && (
-        <p className="col-span-12 text-sm text-red-400">{error}</p>
+        <p className="sm:col-span-12 text-sm text-red-400">{error}</p>
       )}
     </form>
   )

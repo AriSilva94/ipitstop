@@ -128,7 +128,7 @@ export default async function MaintenancesPage({ params, searchParams }: Props) 
   const hasFilters = q || datePreset || dateFrom || dateTo
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-white">Ordens de Serviço</h1>
@@ -148,30 +148,32 @@ export default async function MaintenancesPage({ params, searchParams }: Props) 
         </Suspense>
 
         {/* Status tabs */}
-        <div className="flex items-center gap-1 bg-surface border border-border rounded-xl p-1 flex-shrink-0">
-          {tabs.map((tab) => {
-            const active = status === tab.value || (tab.value === 'all' && !['open', 'closed'].includes(status))
-            return (
-              <Link
-                key={tab.value}
-                href={tabHref(tab.value)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                  active
-                    ? 'bg-foreground text-background'
-                    : 'text-text-secondary hover:bg-surface-light hover:text-foreground'
-                }`}
-              >
-                {tab.label}
-                <span className={`text-xs px-1.5 py-0.5 rounded-full font-semibold ${
-                  active
-                    ? 'bg-background/15 text-background'
-                    : 'bg-surface-light text-text-secondary border border-border'
-                }`}>
-                  {tab.count}
-                </span>
-              </Link>
-            )
-          })}
+        <div className="w-full sm:w-auto">
+          <div className="flex items-center gap-1 bg-surface border border-border rounded-xl p-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {tabs.map((tab) => {
+              const active = status === tab.value || (tab.value === 'all' && !['open', 'closed'].includes(status))
+              return (
+                <Link
+                  key={tab.value}
+                  href={tabHref(tab.value)}
+                  className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                    active
+                      ? 'bg-foreground text-background'
+                      : 'text-text-secondary hover:bg-surface-light hover:text-foreground'
+                  }`}
+                >
+                  {tab.label}
+                  <span className={`text-xs px-1.5 py-0.5 rounded-full font-semibold ${
+                    active
+                      ? 'bg-background/15 text-background'
+                      : 'bg-surface-light text-text-secondary border border-border'
+                  }`}>
+                    {tab.count}
+                  </span>
+                </Link>
+              )
+            })}
+          </div>
         </div>
       </div>
 
@@ -206,7 +208,7 @@ export default async function MaintenancesPage({ params, searchParams }: Props) 
               <Link
                 key={m.id}
                 href={href}
-                className="flex items-center gap-4 bg-slate-800 border border-slate-700 hover:border-slate-600 hover:bg-slate-800/80 rounded-xl px-5 py-4 transition-all group"
+                className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 bg-slate-800 border border-slate-700 hover:border-slate-600 hover:bg-slate-800/80 rounded-xl px-4 sm:px-5 py-4 transition-all group"
               >
                 {/* Status bar */}
                 <div className={`w-1 h-10 rounded-full shrink-0 ${isOpen ? 'bg-emerald-500' : 'bg-slate-600'}`} />
@@ -247,7 +249,7 @@ export default async function MaintenancesPage({ params, searchParams }: Props) 
                 </div>
 
                 {/* Right: total + items + arrow */}
-                <div className="shrink-0 flex flex-col items-end gap-1 min-w-20">
+                <div className="w-full sm:w-auto sm:shrink-0 flex items-center justify-between sm:flex-col sm:items-end gap-1 sm:min-w-20">
                   {total > 0 && (
                     <span className="text-sm font-bold text-white">
                       {total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
@@ -258,7 +260,7 @@ export default async function MaintenancesPage({ params, searchParams }: Props) 
                       {m.items.length} {m.items.length === 1 ? 'item' : 'itens'}
                     </span>
                   )}
-                  <svg className="w-4 h-4 text-slate-600 group-hover:text-amber-400 transition-colors mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-slate-600 group-hover:text-amber-400 transition-colors sm:mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
