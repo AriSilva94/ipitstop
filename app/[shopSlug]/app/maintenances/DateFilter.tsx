@@ -99,19 +99,6 @@ export default function DateFilter() {
   const [picking,   setPicking]   = useState<'from' | 'to'>('from')
   const [hoverDate, setHoverDate] = useState('')
 
-  // Sync selection state from URL whenever dropdown opens
-  useEffect(() => {
-    if (!open) return
-    setSelFrom(currentFrom)
-    setSelTo(currentTo)
-    setPicking(currentFrom ? 'to' : 'from')
-    if (currentFrom) {
-      const d = new Date(currentFrom + 'T00:00:00')
-      setViewYear(d.getFullYear())
-      setViewMonth(d.getMonth())
-    }
-  }, [open]) // eslint-disable-line react-hooks/exhaustive-deps
-
   // Outside click to close
   useEffect(() => {
     function onMouseDown(e: MouseEvent) {
@@ -134,9 +121,28 @@ export default function DateFilter() {
   }
 
   function selectPreset(value: string) {
-    value === 'all'
-      ? navigate({ datePreset: null, dateFrom: null, dateTo: null })
-      : navigate({ datePreset: value, dateFrom: null, dateTo: null })
+    if (value === 'all') {
+      navigate({ datePreset: null, dateFrom: null, dateTo: null })
+      return
+    }
+    navigate({ datePreset: value, dateFrom: null, dateTo: null })
+  }
+
+  function toggleOpen() {
+    if (open) {
+      setOpen(false)
+      return
+    }
+
+    setSelFrom(currentFrom)
+    setSelTo(currentTo)
+    setPicking(currentFrom ? 'to' : 'from')
+    if (currentFrom) {
+      const d = new Date(currentFrom + 'T00:00:00')
+      setViewYear(d.getFullYear())
+      setViewMonth(d.getMonth())
+    }
+    setOpen(true)
   }
 
   function applyCustom() {
@@ -200,7 +206,7 @@ export default function DateFilter() {
 
       {/* ── Trigger button ── */}
       <button
-        onClick={() => setOpen(v => !v)}
+        onClick={toggleOpen}
         className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-medium border transition-all ${
           hasFilter
             ? 'bg-amber-500/10 border-amber-500/30 text-amber-400 hover:bg-amber-500/15'

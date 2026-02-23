@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { loginAction } from './actions'
 
 export default function LoginForm({ shopSlug }: { shopSlug: string }) {
@@ -63,9 +64,9 @@ export default function LoginForm({ shopSlug }: { shopSlug: string }) {
 
       <p className="text-center text-sm text-slate-600 pt-1">
         Sem conta?{' '}
-        <a href="/signup" className="text-amber-500 hover:text-amber-400 transition-colors">
+        <Link href="/signup" className="text-amber-500 hover:text-amber-400 transition-colors">
           Cadastrar oficina
-        </a>
+        </Link>
       </p>
     </form>
   )
