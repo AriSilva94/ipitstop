@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# iPitStop
 
-## Getting Started
+SaaS MVP para oficinas mecânicas brasileiras. Multi-tenant por URL slug.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Prisma v7 + SQLite (via better-sqlite3)
+- JWT (jose) + bcryptjs
+
+## Como rodar localmente
 
 ```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Rodar migrações (cria o banco SQLite)
+npx prisma migrate dev --name init
+
+# 3. Popular o banco com dados de exemplo
+npx prisma db seed
+
+# 4. Iniciar o servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse em: <http://localhost:3000>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Acesso de demonstração
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Após o seed, acesse a oficina demo:
 
-## Learn More
+- **URL de login:** <http://localhost:3000/demo/login>
+- **E-mail:** `dono@demo.com`
+- **Senha:** `demo1234`
 
-To learn more about Next.js, take a look at the following resources:
+## Criar nova oficina
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Acesse <http://localhost:3000/signup> para cadastrar uma nova oficina.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estrutura de rotas
 
-## Deploy on Vercel
+| Rota | Descrição |
+| ---- | --------- |
+| `/signup` | Cadastrar nova oficina |
+| `/{slug}/login` | Login contextual da oficina |
+| `/{slug}/app` | Dashboard |
+| `/{slug}/app/clients` | Lista de clientes |
+| `/{slug}/app/clients/new` | Novo cliente |
+| `/{slug}/app/clients/:id` | Detalhe do cliente + veículos |
+| `/{slug}/app/clients/:id/cars/new` | Adicionar veículo |
+| `/{slug}/app/clients/:id/cars/:carId` | Veículo + histórico de OS |
+| `/{slug}/app/clients/:id/cars/:carId/maintenance/new` | Nova OS |
+| `/{slug}/app/clients/:id/cars/:carId/maintenance/:mId` | OS + itens |
+| `/{slug}/app/clients/:id/cars/:carId/maintenance/:mId/print` | Impressão A4 |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Variáveis de ambiente (.env)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="troque-em-producao"
+```
+
+## Roles
+
+- `admin` — acesso global à plataforma
+- `owner` — dono da oficina (criado no signup)
+- `collaborator` — usuário convidado (futuro)
