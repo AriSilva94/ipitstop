@@ -1,6 +1,21 @@
 @import "tailwindcss";
 
 :root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --surface: #ffffff;
+  --surface-light: #e2e8f0;
+  --border: #cbd5e1;
+  --accent: #d97706;
+  --accent-hover: #b45309;
+  --text-secondary: #1e293b;
+  --text-muted: #475569;
+  --scrollbar-track: #e2e8f0;
+  --scrollbar-thumb: #64748b;
+  --scrollbar-thumb-hover: #475569;
+}
+
+html.dark {
   --background: #0f172a;
   --foreground: #f1f5f9;
   --surface: #1e293b;
@@ -10,13 +25,52 @@
   --accent-hover: #fbbf24;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
+  --scrollbar-track: #1e293b;
+  --scrollbar-thumb: #475569;
+  --scrollbar-thumb-hover: #64748b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-light: var(--surface-light);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-scrollbar-track: var(--scrollbar-track);
+  --color-scrollbar-thumb: var(--scrollbar-thumb);
+  --color-scrollbar-thumb-hover: var(--scrollbar-thumb-hover);
+
+  /* Legacy palette aliases to keep existing app classes theme-aware */
+  --color-slate-950: var(--background);
+  --color-slate-900: var(--background);
+  --color-slate-800: var(--surface);
+  --color-slate-700: var(--border);
+  --color-slate-600: var(--text-muted);
+  --color-slate-500: var(--text-muted);
+  --color-slate-400: var(--text-secondary);
+  --color-slate-300: var(--foreground);
+  --color-slate-200: var(--foreground);
+  --color-slate-100: var(--foreground);
+  --color-white: var(--foreground);
+  --color-amber-500: var(--accent);
+  --color-amber-400: var(--accent-hover);
+  --color-amber-300: var(--accent-hover);
+  --color-orange-500: var(--accent);
+  --color-orange-400: var(--accent-hover);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -31,14 +85,14 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* Print styles - keep clean white for print */

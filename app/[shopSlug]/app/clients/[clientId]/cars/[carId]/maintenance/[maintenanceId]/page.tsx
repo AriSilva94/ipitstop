@@ -123,7 +123,7 @@ export default async function MaintenanceDetailPage({ params }: Props) {
           <Link
             href={`/${shopSlug}/app/clients/${clientId}/cars/${carId}/maintenance/${maintenanceId}/print`}
             target="_blank"
-            className="flex items-center gap-1.5 border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white px-4 py-2 rounded-xl text-sm transition-colors"
+            className="flex items-center gap-1.5 border border-border text-foreground hover:bg-surface-light px-4 py-2 rounded-xl text-sm font-medium transition-colors"
           >
             <svg
               className="w-3.5 h-3.5"
@@ -142,7 +142,7 @@ export default async function MaintenanceDetailPage({ params }: Props) {
           </Link>
           <Link
             href={`/${shopSlug}/app/clients/${clientId}/cars/${carId}/maintenance/${maintenanceId}/edit`}
-            className="flex items-center gap-1.5 border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white px-4 py-2 rounded-xl text-sm transition-colors"
+            className="flex items-center gap-1.5 border border-border text-foreground hover:bg-surface-light px-4 py-2 rounded-xl text-sm font-medium transition-colors"
           >
             <svg
               className="w-3.5 h-3.5"
@@ -172,7 +172,7 @@ export default async function MaintenanceDetailPage({ params }: Props) {
           >
             <button
               type="submit"
-              className="flex items-center gap-1.5 text-sm font-semibold text-red-300 bg-red-900/10 hover:bg-red-800/20 hover:text-white border border-red-700 px-4 py-2 rounded-xl transition-colors"
+              className="flex items-center gap-1.5 text-sm font-semibold text-red-700 bg-red-50 hover:bg-red-100 border border-red-300 px-4 py-2 rounded-xl transition-colors"
             >
               <svg
                 className="w-3.5 h-3.5"
@@ -256,7 +256,7 @@ export default async function MaintenanceDetailPage({ params }: Props) {
                     >
                       <button
                         type="submit"
-                        className="text-xs font-semibold text-red-300 bg-red-900/10 hover:bg-red-800/20 hover:text-white border border-red-700 px-3 py-1 rounded-md transition-colors"
+                        className="text-xs font-semibold text-red-700 bg-red-50 hover:bg-red-100 border border-red-300 px-3 py-1 rounded-md transition-colors"
                       >
                         remover
                       </button>

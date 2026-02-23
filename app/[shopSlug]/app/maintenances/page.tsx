@@ -148,7 +148,7 @@ export default async function MaintenancesPage({ params, searchParams }: Props) 
         </Suspense>
 
         {/* Status tabs */}
-        <div className="flex items-center gap-1 bg-slate-800 border border-slate-700 rounded-xl p-1 flex-shrink-0">
+        <div className="flex items-center gap-1 bg-surface border border-border rounded-xl p-1 flex-shrink-0">
           {tabs.map((tab) => {
             const active = status === tab.value || (tab.value === 'all' && !['open', 'closed'].includes(status))
             return (
@@ -157,13 +157,15 @@ export default async function MaintenancesPage({ params, searchParams }: Props) 
                 href={tabHref(tab.value)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   active
-                    ? 'bg-slate-700 text-white'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-foreground text-background'
+                    : 'text-text-secondary hover:bg-surface-light hover:text-foreground'
                 }`}
               >
                 {tab.label}
                 <span className={`text-xs px-1.5 py-0.5 rounded-full font-semibold ${
-                  active ? 'bg-slate-600 text-slate-200' : 'bg-slate-700/60 text-slate-500'
+                  active
+                    ? 'bg-background/15 text-background'
+                    : 'bg-surface-light text-text-secondary border border-border'
                 }`}>
                   {tab.count}
                 </span>
