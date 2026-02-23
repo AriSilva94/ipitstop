@@ -1,5 +1,6 @@
 import { PrismaClient } from '../app/generated/prisma/client'
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3'
+import fs from 'fs'
 import path from 'path'
 
 function createClient() {
@@ -9,6 +10,21 @@ function createClient() {
   const absolutePath = path.isAbsolute(relativePath)
     ? relativePath
     : path.join(process.cwd(), relativePath)
+
+  // Vercel filesystem is ephemeral; when DATABASE_URL points to /tmp,
+  // bootstrap the DB from the repository seed file if needed.
+  if (absolutePath.startsWith('/tmp/')) {
+    const needsBootstrap =
+      !fs.existsSync(absolutePath) || (fs.existsSync(absolutePath) && fs.statSync(absolutePath).size === 0)
+
+    if (needsBootstrap) {
+      const sourceDbPath = path.join(process.cwd(), 'dev.db')
+      if (fs.existsSync(sourceDbPath)) {
+        fs.mkdirSync(path.dirname(absolutePath), { recursive: true })
+        fs.copyFileSync(sourceDbPath, absolutePath)
+      }
+    }
+  }
 
   const adapter = new PrismaBetterSqlite3({ url: absolutePath })
   return new PrismaClient({ adapter })
